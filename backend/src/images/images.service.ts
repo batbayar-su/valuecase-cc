@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Image } from './entities/image.entity';
-import { Repository } from 'typeorm';
-import * as fs from 'fs';
 import { randomUUID } from 'crypto';
-import { createReadStream } from 'fs';
+import * as fs from 'fs';
+import { Repository } from 'typeorm';
+import { Image } from './entities/image.entity';
 
 @Injectable()
 export class ImagesService {
@@ -35,7 +34,9 @@ export class ImagesService {
   public async saveFile(file: Express.Multer.File): Promise<{ id: number }> {
     await this.createTmpDirIfNeeded();
 
-    const filename = randomUUID() + '_' + (file.filename ?? file.originalname);
+    // made this change because it was failing when file name has spaces
+    const ext = (file.filename ?? file.originalname).split('.').splice(-1);
+    const filename = `${randomUUID()}.${ext}`;
     const mimetype = file.mimetype;
 
     await new Promise<void>((resolve) => {

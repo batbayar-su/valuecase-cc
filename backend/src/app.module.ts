@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { ImagesModule } from './images/images.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppController } from './app.controller';
+import { BlocksModule } from './blocks/blocks.module';
+import { Block } from './blocks/entities/block.entity';
 import { Image } from './images/entities/image.entity';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
@@ -14,9 +16,10 @@ import { Image } from './images/entities/image.entity';
       password: 'vlcs-tech-hiring',
       synchronize: true,
       port: 5432,
-      entities: [Image],
+      entities: [Block, Image],
     }),
     ImagesModule,
+    BlocksModule,
   ],
   controllers: [AppController],
   providers: [],
