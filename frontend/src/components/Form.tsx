@@ -11,8 +11,6 @@ export function Form({ loadBlocks }: { loadBlocks: () => void }) {
   const fileInput = React.createRef<HTMLInputElement>();
 
   const changeFormData = (key: string, value: string) => {
-    const newFormData = { ...formData, [key]: value };
-    console.log(newFormData);
     setFormData({ ...formData, [key]: value });
   };
 
@@ -30,7 +28,6 @@ export function Form({ loadBlocks }: { loadBlocks: () => void }) {
         requestBody.imageId = imageResponse.data.id;
       }
 
-      console.log(requestBody);
       await axios.post<BlockBody>("api/blocks", requestBody);
       setFormData(INITIAL_BLOCK);
       loadBlocks();
