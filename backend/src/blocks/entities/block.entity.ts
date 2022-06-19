@@ -1,11 +1,4 @@
-import { Image } from 'src/images/entities/image.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Block {
@@ -24,7 +17,6 @@ export class Block {
   @Column({ length: 500, nullable: true })
   body: string;
 
-  @OneToOne((type) => Image, { nullable: true })
-  @JoinColumn()
+  @Column({ nullable: true })
   imageId: number;
 }

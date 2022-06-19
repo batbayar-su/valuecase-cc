@@ -1,0 +1,8 @@
+.block-wrapper {
+  margin: 2rem auto;
+}
+
+.block {
+  display: flex;
+  margin: 0.5rem 0;
+}
