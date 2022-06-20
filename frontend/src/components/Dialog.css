@@ -1,0 +1,16 @@
+.wrapper {
+  position: relative;
+}
+
+.dialog {
+  position: absolute;
+  background-color: #fff;
+  width: 360px;
+  margin-top: 1rem;
+  margin-left: -370px;
+  transition: margin-left .5s;
+}
+
+.dialog.is-open {
+  margin-left: 0;
+}

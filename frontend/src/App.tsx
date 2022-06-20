@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./assets/valuecase_logo.png";
 import { BlockList } from "./components/BlockList";
+import { Dialog } from "./components/Dialog";
 import { Form } from "./components/Form";
 import { Ping } from "./components/Ping";
 import { Spacer } from "./components/Spacer";
@@ -38,9 +39,11 @@ function App() {
         </header>
       </Spacer>
 
-      {loading ? <div>Loading</div> : <BlockList blocks={blocks} />}
+      <Dialog openLabel="Add new" closeLabel="Close">
+        <Form loadBlocks={loadBlocks} />
+      </Dialog>
 
-      <Form loadBlocks={loadBlocks} />
+      {loading ? <div>Loading</div> : <BlockList blocks={blocks} />}
     </div>
   );
 }

@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { BlockBody } from "../types/block";
 import "./BlockList.css";
 
@@ -26,6 +24,7 @@ function renderBlock(block: BlockBody) {
 export function BlockList({ blocks }: { blocks: BlockBody[] }) {
   return (
     <div className="block-wrapper">
+      {blocks.length === 0 && "Keep your 👀 on later"}
       {blocks.map((block) => {
         return renderBlock(block);
       })}
